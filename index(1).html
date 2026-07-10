@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>Pro Value — Variante A</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #0F1214;
+    --panel: #171B1D;
+    --panel-line: #2A302F;
+    --text: #E9E7E1;
+    --text-dim: #9BA39D;
+    --accent: #3FA285;      /* logo green, muted */
+    --accent-dim: #1F4A3D;
+    --gold: #B08D57;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:'IBM Plex Sans', sans-serif;
+    line-height:1.5;
+  }
+  .display{font-family:'Space Grotesk', sans-serif;}
+  .mono{font-family:'IBM Plex Mono', monospace;}
+
+  .wrap{max-width:1180px; margin:0 auto; padding:0 32px;}
+
+  /* NAV */
+  nav{
+    display:flex; justify-content:space-between; align-items:center;
+    padding:28px 32px; border-bottom:1px solid var(--panel-line);
+  }
+  .logo{display:flex; align-items:center; gap:10px;}
+  .logo-mark{
+    width:30px; height:30px; border:1px solid var(--accent);
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Space Grotesk'; color:var(--accent); font-weight:700;
+  }
+  .logo-text{font-family:'Space Grotesk'; font-weight:600; letter-spacing:0.02em;}
+  .logo-claim{font-size:11px; color:var(--text-dim); letter-spacing:0.08em; text-transform:uppercase; margin-left:8px;}
+  .navlinks{display:flex; gap:36px; font-size:14px; color:var(--text-dim);}
+  .navlinks a{color:inherit; text-decoration:none;}
+  .navlinks a:hover{color:var(--text);}
+
+  /* HERO */
+  .hero{
+    padding:120px 32px 100px;
+    border-bottom:1px solid var(--panel-line);
+    position:relative;
+  }
+  .hero-grid{
+    display:grid; grid-template-columns: 1fr 320px; gap:60px; max-width:1180px; margin:0 auto;
+  }
+  .eyebrow{
+    font-family:'IBM Plex Mono'; font-size:12px; color:var(--accent);
+    letter-spacing:0.12em; text-transform:uppercase; margin-bottom:24px;
+    display:flex; align-items:center; gap:10px;
+  }
+  .eyebrow::before{content:''; width:20px; height:1px; background:var(--accent);}
+  h1{
+    font-size:56px; font-weight:600; line-height:1.08; letter-spacing:-0.01em;
+    max-width:720px;
+  }
+  .hero-sub{
+    margin-top:28px; font-size:17px; color:var(--text-dim); max-width:520px; line-height:1.65;
+  }
+  .hero-cta{margin-top:40px; display:flex; gap:16px;}
+  .btn{
+    font-family:'IBM Plex Mono'; font-size:13px; padding:14px 24px;
+    border:1px solid var(--accent); color:var(--accent); text-decoration:none;
+    letter-spacing:0.04em; transition:all .2s;
+  }
+  .btn:hover{background:var(--accent); color:var(--bg);}
+  .btn-ghost{border-color:var(--panel-line); color:var(--text-dim);}
+  .btn-ghost:hover{border-color:var(--text-dim); color:var(--text); background:none;}
+
+  .hero-meta{
+    border-left:1px solid var(--panel-line); padding-left:28px;
+    display:flex; flex-direction:column; gap:22px; padding-top:6px;
+  }
+  .meta-row .num{font-family:'Space Grotesk'; font-size:28px; color:var(--accent); font-weight:600;}
+  .meta-row .label{font-size:12px; color:var(--text-dim); margin-top:2px; letter-spacing:0.02em;}
+
+  /* LEDGER — signature element */
+  .ledger{padding:100px 32px; border-bottom:1px solid var(--panel-line);}
+  .section-head{display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:48px; flex-wrap:wrap; gap:16px;}
+  .section-title{font-family:'Space Grotesk'; font-size:28px; font-weight:600;}
+  .section-note{font-family:'IBM Plex Mono'; font-size:12px; color:var(--text-dim);}
+
+  .ledger-table{border-top:1px solid var(--panel-line);}
+  .ledger-row{
+    display:grid; grid-template-columns: 90px 1fr 1fr 160px;
+    gap:20px; padding:22px 0; border-bottom:1px solid var(--panel-line);
+    align-items:center; transition:background .2s;
+  }
+  .ledger-row:hover{background:var(--panel);}
+  .ledger-row .period{font-family:'IBM Plex Mono'; font-size:12px; color:var(--gold);}
+  .ledger-row .client{font-family:'Space Grotesk'; font-size:17px; font-weight:500;}
+  .ledger-row .scope{font-size:13px; color:var(--text-dim);}
+  .ledger-row .tag{
+    font-family:'IBM Plex Mono'; font-size:11px; color:var(--accent);
+    border:1px solid var(--accent-dim); padding:5px 10px; text-align:center;
+    letter-spacing:0.03em;
+  }
+
+  /* SERVICES */
+  .services{padding:100px 32px; border-bottom:1px solid var(--panel-line);}
+  .service-grid{display:grid; grid-template-columns:repeat(4, 1fr); gap:1px; background:var(--panel-line); border:1px solid var(--panel-line);}
+  .service-card{background:var(--bg); padding:32px 24px; min-height:220px; display:flex; flex-direction:column; justify-content:space-between;}
+  .service-card .idx{font-family:'IBM Plex Mono'; font-size:12px; color:var(--accent);}
+  .service-card h3{font-family:'Space Grotesk'; font-size:18px; font-weight:600; margin:20px 0 12px;}
+  .service-card p{font-size:13px; color:var(--text-dim); line-height:1.55;}
+
+  /* PROFILE */
+  .profile{padding:100px 32px; border-bottom:1px solid var(--panel-line);}
+  .profile-grid{display:grid; grid-template-columns: 220px 1fr 1fr; gap:48px; align-items:start;}
+  .profile-photo{width:100%; aspect-ratio:3/4; overflow:hidden; border:1px solid var(--panel-line);}
+  .profile-photo img{width:100%; height:100%; object-fit:cover; display:block; filter:grayscale(1) contrast(1.05);}
+  .profile-grid p{font-size:16px; color:var(--text-dim); line-height:1.75; margin-bottom:18px;}
+  .credentials{display:flex; flex-direction:column; gap:0; border-top:1px solid var(--panel-line);}
+  .cred-row{display:flex; justify-content:space-between; padding:16px 0; border-bottom:1px solid var(--panel-line); font-size:14px;}
+  .cred-row span:first-child{color:var(--text-dim);}
+  .cred-row span:last-child{font-family:'IBM Plex Mono'; color:var(--text);}
+
+  /* CTA */
+  .cta{padding:110px 32px; text-align:center;}
+  .cta h2{font-family:'Space Grotesk'; font-size:36px; font-weight:600; max-width:640px; margin:0 auto 28px;}
+  footer{padding:32px; border-top:1px solid var(--panel-line); display:flex; justify-content:space-between; font-size:12px; color:var(--text-dim); font-family:'IBM Plex Mono';}
+
+  @media(max-width:900px){
+    .hero-grid{grid-template-columns:1fr;}
+    .hero-meta{border-left:none; border-top:1px solid var(--panel-line); padding-left:0; padding-top:28px; flex-direction:row; flex-wrap:wrap;}
+    h1{font-size:38px;}
+    .service-grid{grid-template-columns:1fr 1fr;}
+    .profile-grid{grid-template-columns:1fr;}
+    .ledger-row{grid-template-columns:1fr; gap:6px;}
+    .navlinks{display:none;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">
+    <div class="logo-mark">✓</div>
+    <div>
+      <span class="logo-text">PRO VALUE</span>
+      <div class="logo-claim">management · consulting · communication</div>
+    </div>
+  </div>
+  <div class="navlinks">
+    <a href="#">Leistungen</a>
+    <a href="#">Referenzen</a>
+    <a href="#">Über mich</a>
+    <a href="#">Kontakt</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-grid">
+    <div>
+      <div class="eyebrow">Management Consulting · Interim Management</div>
+      <h1 class="display">Veränderung<br>braucht jemanden,<br>der sie führt.</h1>
+      <p class="hero-sub">25 Jahre Erfahrung in Restrukturierung, SAP-Transformation und Interim-Führung — für Unternehmen, die in kritischen Phasen klare Verantwortung brauchen, keine Beratung von der Seitenlinie.</p>
+      <div class="hero-cta">
+        <a href="#" class="btn">Kontakt aufnehmen</a>
+        <a href="#" class="btn btn-ghost">Referenzen ansehen</a>
+      </div>
+    </div>
+    <div class="hero-meta">
+      <div class="meta-row">
+        <div class="num">25+</div>
+        <div class="label">Jahre SAP- &amp; Interim-Erfahrung</div>
+      </div>
+      <div class="meta-row">
+        <div class="num">5</div>
+        <div class="label">Branchen: Industrie, Automotive, Chemie, Tech</div>
+      </div>
+      <div class="meta-row">
+        <div class="num">Graz</div>
+        <div class="label">Sitz — Einsatz DACH-weit</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="ledger wrap">
+  <div class="section-head">
+    <div class="section-title display">Track Record</div>
+    <div class="section-note">ausgewählte Mandate</div>
+  </div>
+  <div class="ledger-table">
+    <div class="ledger-row">
+      <div class="period">2012–17</div>
+      <div class="client display">Carl Zeiss</div>
+      <div class="scope">PMO-Leitung, globale CRM-Transformation, 3 Kontinente</div>
+      <div class="tag">PMO</div>
+    </div>
+    <div class="ledger-row">
+      <div class="period">2017–18</div>
+      <div class="client display">Audi AG</div>
+      <div class="scope">PMO, €300M Digitalisierungsprogramm, VW-Group-weit</div>
+      <div class="tag">PMO</div>
+    </div>
+    <div class="ledger-row">
+      <div class="period">2019–20</div>
+      <div class="client display">DAW SE</div>
+      <div class="scope">Gruppenweite Reorganisation, 16 Projekte, 24 Länder</div>
+      <div class="tag">RESTRUKTURIERUNG</div>
+    </div>
+    <div class="ledger-row">
+      <div class="period">2020–24</div>
+      <div class="client display">VW Group</div>
+      <div class="scope">PMO Officer, NSC-Reorganisation, SAFe-Einführung</div>
+      <div class="tag">TRANSFORMATION</div>
+    </div>
+    <div class="ledger-row">
+      <div class="period">2024–25</div>
+      <div class="client display">Swiss Krono</div>
+      <div class="scope">Compliance-Transformation, 6 europäische Länder</div>
+      <div class="tag">INTERIM</div>
+    </div>
+  </div>
+</section>
+
+<section class="services wrap">
+  <div class="section-head">
+    <div class="section-title display">Leistungen</div>
+    <div class="section-note">vier Kernfelder</div>
+  </div>
+  <div class="service-grid">
+    <div class="service-card">
+      <div class="idx mono">01</div>
+      <div><h3 class="display">Interim Management</h3><p>Führung auf Zeit in Vakanz- oder Krisensituationen — operativ handlungsfähig ab Tag eins.</p></div>
+    </div>
+    <div class="service-card">
+      <div class="idx mono">02</div>
+      <div><h3 class="display">SAP-Transformation</h3><p>Fit-to-Standard-Projekte, S/4HANA-Umstellungen, Governance über den gesamten Lebenszyklus.</p></div>
+    </div>
+    <div class="service-card">
+      <div class="idx mono">03</div>
+      <div><h3 class="display">Restrukturierung</h3><p>Organisationsentwicklung und Reorganisation in komplexen, multinationalen Konzernstrukturen.</p></div>
+    </div>
+    <div class="service-card">
+      <div class="idx mono">04</div>
+      <div><h3 class="display">PMO &amp; Programmsteuerung</h3><p>Aufbau und Leitung von Programm-Offices für großvolumige, mehrjährige Vorhaben.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="profile wrap">
+  <div class="profile-grid">
+    <div class="profile-photo">
+      <img src="christian-portrait.jpg" alt="Christian, Pro Value Unternehmensberatung">
+    </div>
+    <div>
+      <div class="eyebrow">Über mich</div>
+      <p>25 Jahre Beratungs- und Interim-Erfahrung in SAP-getriebenen Transformationsprojekten — von der globalen CRM-Einführung bei Carl Zeiss bis zur landesweiten Reorganisation bei DAW SE.</p>
+      <p>Ich übernehme Verantwortung dort, wo Konzerne sie brauchen: in Programmen mit hoher Komplexität, engem Zeitrahmen und mehreren Stakeholdern über Ländergrenzen hinweg.</p>
+    </div>
+    <div class="credentials">
+      <div class="cred-row"><span>Standort</span><span>Graz, AT</span></div>
+      <div class="cred-row"><span>Erfahrung</span><span>25+ Jahre</span></div>
+      <div class="cred-row"><span>Zertifizierung</span><span>NLP, Coaching</span></div>
+      <div class="cred-row"><span>Netzwerk</span><span>Atreus Interim</span></div>
+      <div class="cred-row"><span>Branchen</span><span>Industrie · Automotive · Chemie · Tech</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="cta wrap">
+  <h2 class="display">Ein Mandat mit hoher Komplexität — und wenig Zeit?</h2>
+  <a href="#" class="btn">Gespräch vereinbaren</a>
+</section>
+
+<footer>
+  <span>© Pro Value Unternehmensberatung GmbH</span>
+  <span>Graz, Österreich</span>
+</footer>
+
+</body>
+</html>
