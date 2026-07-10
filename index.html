@@ -118,7 +118,9 @@
 
   /* PROFILE */
   .profile{padding:100px 32px; border-bottom:1px solid var(--panel-line);}
-  .profile-grid{display:grid; grid-template-columns: 1fr 1fr; gap:60px; align-items:start;}
+  .profile-grid{display:grid; grid-template-columns: 220px 1fr 1fr; gap:48px; align-items:start;}
+  .profile-photo{width:100%; aspect-ratio:3/4; overflow:hidden; border:1px solid var(--panel-line);}
+  .profile-photo img{width:100%; height:100%; object-fit:cover; display:block; filter:grayscale(1) contrast(1.05);}
   .profile-grid p{font-size:16px; color:var(--text-dim); line-height:1.75; margin-bottom:18px;}
   .credentials{display:flex; flex-direction:column; gap:0; border-top:1px solid var(--panel-line);}
   .cred-row{display:flex; justify-content:space-between; padding:16px 0; border-bottom:1px solid var(--panel-line); font-size:14px;}
@@ -253,6 +255,9 @@
 
 <section class="profile wrap">
   <div class="profile-grid">
+    <div class="profile-photo">
+      <img src="christian-portrait.jpg" alt="Christian, Pro Value Unternehmensberatung">
+    </div>
     <div>
       <div class="eyebrow">Über mich</div>
       <p>25 Jahre Beratungs- und Interim-Erfahrung in SAP-getriebenen Transformationsprojekten — von der globalen CRM-Einführung bei Carl Zeiss bis zur landesweiten Reorganisation bei DAW SE.</p>
