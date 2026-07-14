@@ -71,19 +71,21 @@
   .service-item p{color:var(--text-dim); font-size:15px; max-width:520px;}
 
   /* PROFILE */
-  .profile{padding:100px 32px; max-width:980px; margin:0 auto;}
-  .profile-grid{display:grid; grid-template-columns: 200px 1.3fr 1fr; gap:48px;}
+  .profile{padding:100px 32px; background:#14201B; margin-left:calc(50% - 50vw); margin-right:calc(50% - 50vw); padding-left:calc(50vw - 50% + 32px); padding-right:calc(50vw - 50% + 32px);}
+  .profile-inner{max-width:980px; margin:0 auto;}
+  .profile-grid{display:grid; grid-template-columns: 340px 1.3fr 1fr; gap:56px;}
   .profile-photo{width:100%; aspect-ratio:3/4; overflow:hidden; border-radius:2px;}
   .profile-photo img{width:100%; height:100%; object-fit:cover; display:block; filter:grayscale(1) contrast(1.05);}
-  .profile-text p{font-size:17px; color:var(--text); margin-bottom:20px; line-height:1.8;}
+  .profile-text p{font-size:17px; color:#D8D9D4; margin-bottom:20px; line-height:1.8;}
+  .profile .eyebrow{color:#7FBFA0;}
   .pullquote{
-    font-family:'Fraunces'; font-style:italic; font-size:20px; color:var(--green);
-    border-left:2px solid var(--green); padding-left:24px; margin:32px 0; line-height:1.5;
+    font-family:'Fraunces'; font-style:italic; font-size:20px; color:#9FD8B8;
+    border-left:2px solid #4C7566; padding-left:24px; margin:32px 0; line-height:1.5;
   }
   .fact-list{display:flex; flex-direction:column; gap:18px; padding-top:8px;}
-  .fact{border-bottom:1px solid var(--line); padding-bottom:16px;}
-  .fact .k{font-size:12px; color:var(--text-dim); text-transform:uppercase; letter-spacing:0.05em; margin-bottom:4px;}
-  .fact .v{font-family:'Fraunces'; font-size:17px;}
+  .fact{border-bottom:1px solid rgba(255,255,255,0.14); padding-bottom:16px;}
+  .fact .k{font-size:12px; color:#8C9690; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:4px;}
+  .fact .v{font-family:'Fraunces'; font-size:17px; color:#F1F0EC;}
 
   .cta{padding:110px 32px; text-align:center; background:var(--green); color:var(--bg);}
   .cta h2{font-family:'Fraunces'; font-size:38px; font-weight:500; max-width:600px; margin:0 auto 30px;}
@@ -184,6 +186,7 @@
 </section>
 
 <section class="profile">
+  <div class="profile-inner">
   <div class="profile-grid">
     <div class="profile-photo">
       <img src="christian-portrait.jpg" alt="Christian, Pro Value Unternehmensberatung">
@@ -201,6 +204,7 @@
       <div class="fact"><div class="k">Netzwerk</div><div class="v">Atreus Interim Management</div></div>
       <div class="fact"><div class="k">Branchen</div><div class="v">Industrie, Automotive, Chemie, Technologie</div></div>
     </div>
+  </div>
   </div>
 </section>
 
