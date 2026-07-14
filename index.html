@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>Pro Value — Variante B</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Source+Sans+3:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #FAF9F6;
+    --panel: #F1EFE9;
+    --line: #DAD5C9;
+    --text: #201F1B;
+    --text-dim: #6B6759;
+    --green: #1F4D3D;
+    --green-soft: #4C7566;
+    --clay: #8A5A3B;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--bg); color:var(--text); font-family:'Source Sans 3', sans-serif; line-height:1.6;}
+  .serif{font-family:'Fraunces', serif;}
+  .mono{font-family:'JetBrains Mono', monospace;}
+  .wrap{max-width:980px; margin:0 auto; padding:0 32px;}
+
+  nav{display:flex; justify-content:space-between; align-items:center; padding:32px; max-width:980px; margin:0 auto;}
+  .logo{display:flex; align-items:center; gap:12px;}
+  .logo-img{height:88px; display:block;}
+  .navlinks{display:flex; gap:32px; font-size:14px;}
+  .navlinks a{color:var(--text); text-decoration:none; border-bottom:1px solid transparent;}
+  .navlinks a:hover{border-color:var(--green);}
+
+  .hero{padding:80px 32px 100px; max-width:980px; margin:0 auto;}
+  .eyebrow{font-family:'JetBrains Mono'; font-size:12px; color:var(--green); letter-spacing:0.08em; text-transform:uppercase; margin-bottom:20px;}
+  h1{font-family:'Fraunces'; font-size:52px; font-weight:500; line-height:1.15; max-width:760px; letter-spacing:-0.01em;}
+  h1 em{font-style:italic; color:var(--green);}
+  .hero-sub{margin-top:26px; font-size:19px; color:var(--text-dim); max-width:560px; line-height:1.65;}
+  .hero-cta{margin-top:36px; display:flex; gap:18px; align-items:center;}
+  .btn{
+    font-family:'Source Sans 3'; font-weight:600; font-size:15px; padding:14px 26px;
+    background:var(--green); color:var(--bg); text-decoration:none; border-radius:2px;
+  }
+  .btn-text{font-size:15px; color:var(--text); text-decoration:underline; text-underline-offset:4px; text-decoration-color:var(--line);}
+
+  .divider{border:none; border-top:1px solid var(--line); max-width:980px; margin:0 auto;}
+
+  /* TIMELINE — signature element */
+  .timeline-section{padding:90px 32px; max-width:980px; margin:0 auto;}
+  .section-title{font-family:'Fraunces'; font-size:30px; font-weight:500; margin-bottom:12px;}
+  .section-lead{color:var(--text-dim); max-width:520px; margin-bottom:56px; font-size:16px;}
+
+  .timeline{position:relative; padding-left:32px;}
+  .timeline::before{content:''; position:absolute; left:5px; top:6px; bottom:6px; width:1px; background:var(--line);}
+  .t-item{position:relative; padding-bottom:44px;}
+  .t-item:last-child{padding-bottom:0;}
+  .t-item::before{content:''; position:absolute; left:-32px; top:6px; width:11px; height:11px; border-radius:50%; background:var(--bg); border:2px solid var(--green);}
+  .t-year{font-family:'JetBrains Mono'; font-size:12px; color:var(--clay); margin-bottom:6px;}
+  .t-client{font-family:'Fraunces'; font-size:22px; font-weight:500; margin-bottom:6px;}
+  .t-desc{font-size:15px; color:var(--text-dim); max-width:560px;}
+
+  /* SERVICES */
+  .services{background:var(--panel); padding:90px 32px;}
+  .service-list{max-width:980px; margin:0 auto; display:flex; flex-direction:column;}
+  .service-item{
+    display:grid; grid-template-columns: 240px 1fr; gap:40px;
+    padding:32px 0; border-bottom:1px solid var(--line); align-items:baseline;
+  }
+  .service-item:first-child{border-top:1px solid var(--line);}
+  .service-item h3{font-family:'Fraunces'; font-size:24px; font-weight:500;}
+  .service-item p{color:var(--text-dim); font-size:15px; max-width:520px;}
+
+  /* PROFILE */
+  .profile{padding:100px 32px; max-width:980px; margin:0 auto;}
+  .profile-grid{display:grid; grid-template-columns: 200px 1.3fr 1fr; gap:48px;}
+  .profile-photo{width:100%; aspect-ratio:3/4; overflow:hidden; border-radius:2px;}
+  .profile-photo img{width:100%; height:100%; object-fit:cover; display:block; filter:grayscale(1) contrast(1.05);}
+  .profile-text p{font-size:17px; color:var(--text); margin-bottom:20px; line-height:1.8;}
+  .pullquote{
+    font-family:'Fraunces'; font-style:italic; font-size:20px; color:var(--green);
+    border-left:2px solid var(--green); padding-left:24px; margin:32px 0; line-height:1.5;
+  }
+  .fact-list{display:flex; flex-direction:column; gap:18px; padding-top:8px;}
+  .fact{border-bottom:1px solid var(--line); padding-bottom:16px;}
+  .fact .k{font-size:12px; color:var(--text-dim); text-transform:uppercase; letter-spacing:0.05em; margin-bottom:4px;}
+  .fact .v{font-family:'Fraunces'; font-size:17px;}
+
+  .cta{padding:110px 32px; text-align:center; background:var(--green); color:var(--bg);}
+  .cta h2{font-family:'Fraunces'; font-size:38px; font-weight:500; max-width:600px; margin:0 auto 30px;}
+  .cta .btn{background:var(--bg); color:var(--green);}
+
+  footer{padding:32px; display:flex; justify-content:space-between; font-size:13px; color:var(--text-dim); max-width:980px; margin:0 auto;}
+
+  @media(max-width:840px){
+    h1{font-size:36px;}
+    .profile-grid{grid-template-columns:1fr;}
+    .service-item{grid-template-columns:1fr; gap:8px;}
+    .navlinks{display:none;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">
+    <img class="logo-img" src="logo.png" alt="Pro Value Unternehmensberatung GmbH">
+  </div>
+  <div class="navlinks">
+    <a href="#">Leistungen</a>
+    <a href="#">Werdegang</a>
+    <a href="#">Über mich</a>
+    <a href="#">Kontakt</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="eyebrow">Management Consulting · Interim Management</div>
+  <h1>Verantwortung übernehmen, <em>wenn es zählt.</em></h1>
+  <p class="hero-sub">25 Jahre Erfahrung in Projektmanagement, Restrukturierung und Transformation — Ergebnisse liefern anstatt Empfehlungen.</p>
+  <div class="hero-cta">
+    <a href="#" class="btn">Kontakt aufnehmen</a>
+    <a href="#" class="btn-text">Werdegang lesen →</a>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section class="timeline-section">
+  <div class="section-title">Werdegang</div>
+  <p class="section-lead">Fünf Jahrzehnte SAP-Beratung, verdichtet auf die Stationen, die zeigen, was ich mitbringe.</p>
+  <div class="timeline">
+    <div class="t-item">
+      <div class="t-year">2024–2025</div>
+      <div class="t-client">Swiss Krono</div>
+      <div class="t-desc">Projektleitung Compliance-Transformation in sechs europäischen Ländern.</div>
+    </div>
+    <div class="t-item">
+      <div class="t-year">2020–2024</div>
+      <div class="t-client">VW Group</div>
+      <div class="t-desc">PMO Officer für NSC-Reorganisation und SAFe-Einführung.</div>
+    </div>
+    <div class="t-item">
+      <div class="t-year">2019–2020</div>
+      <div class="t-client">DAW SE</div>
+      <div class="t-desc">PMO für eine gruppenweite Reorganisation: 16 Projekte, 24 Länder.</div>
+    </div>
+    <div class="t-item">
+      <div class="t-year">2017–2018</div>
+      <div class="t-client">Audi AG</div>
+      <div class="t-desc">PMO für ein 300-Millionen-Euro-Digitalisierungsprogramm, VW-Group-weit.</div>
+    </div>
+    <div class="t-item">
+      <div class="t-year">2012–2017</div>
+      <div class="t-client">Carl Zeiss</div>
+      <div class="t-desc">PMO-Leitung für eine globale CRM-Transformation über drei Kontinente.</div>
+    </div>
+  </div>
+</section>
+
+<section class="services">
+  <div class="service-list">
+    <div class="service-item">
+      <h3 class="serif">Interim Management</h3>
+      <p>Führung auf Zeit in Vakanz- oder Krisensituationen — handlungsfähig ab dem ersten Tag, eingebunden über das Atreus-Netzwerk.</p>
+    </div>
+    <div class="service-item">
+      <h3 class="serif">SAP-Transformation</h3>
+      <p>Fit-to-Standard-Projekte und S/4HANA-Umstellungen — von der Konzeption bis zur Governance über den gesamten Projektverlauf.</p>
+    </div>
+    <div class="service-item">
+      <h3 class="serif">Restrukturierung</h3>
+      <p>Organisationsentwicklung in komplexen, multinationalen Konzernstrukturen — mit Erfahrung aus 24-Länder-Programmen.</p>
+    </div>
+    <div class="service-item">
+      <h3 class="serif">PMO &amp; Programmsteuerung</h3>
+      <p>Aufbau und Leitung von Programm-Offices für großvolumige, mehrjährige Vorhaben.</p>
+    </div>
+  </div>
+</section>
+
+<section class="profile">
+  <div class="profile-grid">
+    <div class="profile-photo">
+      <img src="christian-portrait.jpg" alt="Christian, Pro Value Unternehmensberatung">
+    </div>
+    <div class="profile-text">
+      <div class="eyebrow">Über mich</div>
+      <p>25 Jahre Beratungs- und Interim-Erfahrung in SAP-getriebenen Transformationsprojekten — von der globalen CRM-Einführung bei Carl Zeiss bis zur landesweiten Reorganisation bei DAW SE.</p>
+      <div class="pullquote">„Ich übernehme Verantwortung dort, wo Konzerne sie brauchen — nicht dort, wo es bequem ist."</div>
+      <p>Mein Ansatz verbindet SAP-Fachwissen mit Programmsteuerung und Kommunikation über Hierarchie- und Ländergrenzen hinweg. Genau dafür steht der Name: management · consulting · communication.</p>
+    </div>
+    <div class="fact-list">
+      <div class="fact"><div class="k">Standort</div><div class="v">Graz, Österreich</div></div>
+      <div class="fact"><div class="k">Erfahrung</div><div class="v">25+ Jahre</div></div>
+      <div class="fact"><div class="k">Zertifizierung</div><div class="v">NLP, Coaching</div></div>
+      <div class="fact"><div class="k">Netzwerk</div><div class="v">Atreus Interim Management</div></div>
+      <div class="fact"><div class="k">Branchen</div><div class="v">Industrie, Automotive, Chemie, Technologie</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <h2 class="serif">Ein Mandat mit hoher Komplexität — und wenig Zeit?</h2>
+  <a href="#" class="btn">Gespräch vereinbaren</a>
+</section>
+
+<footer>
+  <span>© Pro Value Unternehmensberatung GmbH</span>
+  <span>Graz, Österreich</span>
+</footer>
+
+</body>
+</html>
